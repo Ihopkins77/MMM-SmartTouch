@@ -113,9 +113,9 @@ Module.register("MMM-SmartTouch", {
     const buttonList = document.createElement("ul");
     buttonList.appendChild(restartButton);
 
-    mainMenuDiv.appendChild(buttonList);
+    rgbMenuDiv.appendChild(buttonList);
 
-    return mainMenuDiv;
+    return rgbMenuDiv;
   },
 
 
@@ -147,7 +147,7 @@ Module.register("MMM-SmartTouch", {
 
     rgbToggleButtonDiv.addEventListener("click", () => this.toggleRGBMenu());
 
-    return menuToggleButtonDiv;
+    return rgbToggleButtonDiv;
   },
 
 
@@ -203,7 +203,7 @@ Module.register("MMM-SmartTouch", {
 
     const rgbMenu = this.createRGBMenuDiv();
     document.body.appendChild(rgbMenu);
-    
+
     return container;
   },
 
