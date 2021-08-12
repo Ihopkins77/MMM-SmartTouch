@@ -94,7 +94,7 @@
 }
 
 .st-container__rgb-toggle.show .st-toggle__bar_three {
-  transform: rotate(-45deg) translate(8px, -9px);
+  transform: rotate(45deg) translate(8px,-9px);
 }
 
 .st-container__main-menu {
