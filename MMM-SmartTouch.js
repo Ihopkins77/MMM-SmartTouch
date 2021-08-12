@@ -101,25 +101,24 @@ Module.register("MMM-SmartTouch", {
     return menuToggleButtonDiv;
   },
 
+  creatergbMenuDiv: function () {
+    const mainMenuDiv = document.createElement("div");
+    mainMenuDiv.className = "st-container__main-menu";
+    mainMenuDiv.id = "st-main-menu";
 
-
-  createRGBMenuDiv: function () {
-    const rgbMenuDiv = document.createElement("div");
-    rgbMenuDiv.className = "st-container__main-menu";
-    rgbMenuDiv.id = "st-rgb-menu";
-
+    const shutdownButton = this.createShutdownButton();
     const restartButton = this.createRestartButton();
 
     const buttonList = document.createElement("ul");
+    buttonList.appendChild(shutdownButton);
     buttonList.appendChild(restartButton);
 
-    rgbMenuDiv.appendChild(buttonList);
+    mainMenuDiv.appendChild(buttonList);
 
-    return rgbMenuDiv;
+    return mainMenuDiv;
   },
 
-
-  toggleRGBMenu: function () {
+  togglergbMenu: function () {
     const menuToggleDiv = document.getElementById("st-rgb-toggle")
     menuToggleDiv.classList.toggle('show');
 
@@ -127,13 +126,13 @@ Module.register("MMM-SmartTouch", {
     mainMenuDiv.classList.toggle('show')
   },
 
-  createRGBToggleButtonDiv: function () {
-    const rgbToggleButtonDiv = document.createElement("div");
-    rgbToggleButtonDiv.className = "st-container__menu-toggle";
-    rgbToggleButtonDiv.id = "st-rgb-toggle";
+  creatergbToggleButtonDiv: function () {
+    const menuToggleButtonDiv = document.createElement("div");
+    menuToggleButtonDiv.className = "st-container__menu-toggle";
+    menuToggleButtonDiv.id = "st-menu-toggle";
 
     const hamburgerLineOne = document.createElement("div");
-    hamburgerLineOne.className = "st-container__rgb-toggle st-toggle__bar_one";
+    hamburgerLineOne.className = "st-container__menu-toggle st-toggle__bar_one";
 
     const hamburgerLineTwo = document.createElement("div");
     hamburgerLineTwo.className = "st-toggle__bar_two";
@@ -141,14 +140,16 @@ Module.register("MMM-SmartTouch", {
     const hamburgerLineThree = document.createElement("div");
     hamburgerLineThree.className = "st-toggle__bar_three";
 
-    rgbToggleButtonDiv.appendChild(hamburgerLineOne);
-    rgbToggleButtonDiv.appendChild(hamburgerLineTwo);
-    rgbToggleButtonDiv.appendChild(hamburgerLineThree);
+    menuToggleButtonDiv.appendChild(hamburgerLineOne);
+    menuToggleButtonDiv.appendChild(hamburgerLineTwo);
+    menuToggleButtonDiv.appendChild(hamburgerLineThree);
 
-    rgbToggleButtonDiv.addEventListener("click", () => this.toggleRGBMenu());
+    menuToggleButtonDiv.addEventListener("click", () => this.togglergbMenu());
 
-    return rgbToggleButtonDiv;
+    return menuToggleButtonDiv;
   },
+
+
 
 
 
@@ -198,10 +199,10 @@ Module.register("MMM-SmartTouch", {
     const mainMenu = this.createMainMenuDiv();
     document.body.appendChild(mainMenu);
 
-    const rbgToggleButton = this.createRGBToggleButtonDiv();
+    const rbgToggleButton = this.creatergbToggleButtonDiv();
     container.appendChild(rgbToggleButton);
 
-    const rgbMenu = this.createRGBMenuDiv();
+    const rgbMenu = this.creatergbMenuDiv();
     document.body.appendChild(rgbMenu);
 
     return container;
