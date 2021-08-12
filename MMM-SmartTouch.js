@@ -53,6 +53,23 @@ Module.register("MMM-SmartTouch", {
     return standByButtonDiv;
   },
 
+  createMainMenuDiv: function () {
+    const mainMenuDiv = document.createElement("div");
+    mainMenuDiv.className = "st-container__main-menu";
+    mainMenuDiv.id = "st-main-menu";
+
+    const shutdownButton = this.createShutdownButton();
+    const restartButton = this.createRestartButton();
+
+    const buttonList = document.createElement("ul");
+    buttonList.appendChild(shutdownButton);
+    buttonList.appendChild(restartButton);
+
+    mainMenuDiv.appendChild(buttonList);
+
+    return mainMenuDiv;
+  },
+
   toggleSideMenu: function () {
     const menuToggleDiv = document.getElementById("st-menu-toggle")
     menuToggleDiv.classList.toggle('show');
@@ -84,6 +101,58 @@ Module.register("MMM-SmartTouch", {
     return menuToggleButtonDiv;
   },
 
+
+
+  createRGBMenuDiv: function () {
+    const rgbMenuDiv = document.createElement("div");
+    rgbMenuDiv.className = "st-container__main-menu";
+    rgbMenuDiv.id = "st-rgb-menu";
+
+    const restartButton = this.createRestartButton();
+
+    const buttonList = document.createElement("ul");
+    buttonList.appendChild(restartButton);
+
+    mainMenuDiv.appendChild(buttonList);
+
+    return mainMenuDiv;
+  },
+
+
+  toggleRGBMenu: function () {
+    const menuToggleDiv = document.getElementById("st-rgb-toggle")
+    menuToggleDiv.classList.toggle('show');
+
+    const mainMenuDiv = document.getElementById("st-rgb-menu")
+    mainMenuDiv.classList.toggle('show')
+  },
+
+  createRGBToggleButtonDiv: function () {
+    const rgbToggleButtonDiv = document.createElement("div");
+    rgbToggleButtonDiv.className = "st-container__menu-toggle";
+    rgbToggleButtonDiv.id = "st-rgb-toggle";
+
+    const hamburgerLineOne = document.createElement("div");
+    hamburgerLineOne.className = "st-container__rgb-toggle st-toggle__bar_one";
+
+    const hamburgerLineTwo = document.createElement("div");
+    hamburgerLineTwo.className = "st-toggle__bar_two";
+
+    const hamburgerLineThree = document.createElement("div");
+    hamburgerLineThree.className = "st-toggle__bar_three";
+
+    rgbToggleButtonDiv.appendChild(hamburgerLineOne);
+    rgbToggleButtonDiv.appendChild(hamburgerLineTwo);
+    rgbToggleButtonDiv.appendChild(hamburgerLineThree);
+
+    rgbToggleButtonDiv.addEventListener("click", () => this.toggleRGBMenu());
+
+    return menuToggleButtonDiv;
+  },
+
+
+
+
   createShutdownButton: function () {
     const shutdownButtonItem = document.createElement("li");
     shutdownButtonItem.innerHTML = "<span class='fa fa-power-off fa-3x'></span>"
@@ -110,22 +179,9 @@ Module.register("MMM-SmartTouch", {
     return restartButtonItem
   },
 
-  createMainMenuDiv: function () {
-    const mainMenuDiv = document.createElement("div");
-    mainMenuDiv.className = "st-container__main-menu";
-    mainMenuDiv.id = "st-main-menu";
 
-    const shutdownButton = this.createShutdownButton();
-    const restartButton = this.createRestartButton();
 
-    const buttonList = document.createElement("ul");
-    buttonList.appendChild(shutdownButton);
-    buttonList.appendChild(restartButton);
 
-    mainMenuDiv.appendChild(buttonList);
-
-    return mainMenuDiv;
-  },
 
   getDom: function () {
     // Initial standby state
@@ -142,6 +198,12 @@ Module.register("MMM-SmartTouch", {
     const mainMenu = this.createMainMenuDiv();
     document.body.appendChild(mainMenu);
 
+    const rbgToggleButton = this.createRGBToggleButtonDiv();
+    container.appendChild(rgbToggleButton);
+
+    const rgbMenu = this.createRGBMenuDiv();
+    document.body.appendChild(rgbMenu);
+    
     return container;
   },
 
