@@ -85,6 +85,18 @@
   transform: rotate(-45deg) translate(8px, -9px);
 }
 
+.st-container__rgb-toggle.show .st-toggle__bar_one {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.st-container__rgb-toggle.show .st-toggle__bar_two {
+  opacity: 0;
+}
+
+.st-container__rgb-toggle.show .st-toggle__bar_three {
+  transform: rotate(-45deg) translate(8px, -9px);
+}
+
 .st-container__main-menu {
   width: 0;
   position: fixed;
